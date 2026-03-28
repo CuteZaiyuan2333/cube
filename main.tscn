@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5di3aiydi37j"]
+[gd_scene format=3 uid="uid://b5di3aiydi37j"]
 
 [ext_resource type="Script" uid="uid://cx5kxjrdwy1hn" path="res://cube.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dpyia8d00f6ii" path="res://models/center_ball.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://6w8k0m4y8p6n" path="res://main_ui.gd" id="3_ui"]
+[ext_resource type="Script" uid="uid://qwjbqm6s5key" path="res://main_ui.gd" id="3_ui"]
 [ext_resource type="PackedScene" uid="uid://c7k0m4yq8p6n7" path="res://SettingsUI.tscn" id="4_settings"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
@@ -16,23 +16,23 @@ sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 background_mode = 2
 sky = SubResource("Sky_h2yge")
 tonemap_mode = 2
-glow_enabled = true
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
+glow_enabled = true
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=529289887]
 script = ExtResource("1_ig7tw")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=211877054]
 script = ExtResource("3_ui")
 
-[node name="MenuBar" type="MenuBar" parent="UI"]
+[node name="MenuBar" type="MenuBar" parent="UI" unique_id=355330298]
 offset_right = 1152.0
 offset_bottom = 31.0
 flat = true
 
-[node name="Edit" type="MenuButton" parent="UI/MenuBar"]
+[node name="Edit" type="MenuButton" parent="UI/MenuBar" unique_id=1807199987]
 layout_mode = 0
 offset_right = 38.0
 offset_bottom = 31.0
@@ -45,20 +45,19 @@ popup/item_1/id = 1
 popup/item_2/text = "画质设置..."
 popup/item_2/id = 2
 
-[node name="SettingsWindow" parent="UI" instance=ExtResource("4_settings")]
-visible = false
+[node name="SettingsWindow" parent="UI" unique_id=1348493053 instance=ExtResource("4_settings")]
 
-[node name="centerBall" parent="." instance=ExtResource("2_0xm2m")]
+[node name="centerBall" parent="." unique_id=333524906 instance=ExtResource("2_0xm2m")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1975511081]
 environment = SubResource("Environment_1bvp3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2012694331]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(0.7071067, -0.24416266, 0.6636147, 0, 0.9384929, 0.34529817, -0.7071067, -0.24416266, 0.6636147, 0, 0, 0)
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1449160029]
+transform = Transform3D(0.7071067, -0.4999999, 0.49999988, 0, 0.7071067, 0.70710665, -0.7071067, -0.4999999, 0.49999988, 0, 0, 0)
 spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2122726270]
