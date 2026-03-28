@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7k0m4yq8p6n7"]
+
+[ext_resource type="Script" uid="uid://b8k0m4yq8p6n7" path="res://settings_ui.gd" id="1_w8k0m"]
+
+[node name="SettingsWindow" type="Window"]
+title = "设置"
+initial_position = 2
+size = Vector2i(500, 400)
+visible = false
+exclusive = true
+unresizable = true
+script = ExtResource("1_w8k0m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ScalingGroup" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScalingGroup"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "超分辨率 (Smart Scaling)"
+
+[node name="HBoxMode" type="HBoxContainer" parent="VBoxContainer/ScalingGroup"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScalingGroup/HBoxMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "当前超分技术:"
+
+[node name="LabelMode" type="Label" parent="VBoxContainer/ScalingGroup/HBoxMode"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MetalFX / FSR 2.2"
+horizontal_alignment = 2
+
+[node name="ResolutionGroup" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ResolutionGroup"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "目标分辨率"
+
+[node name="HBoxRes" type="HBoxContainer" parent="VBoxContainer/ResolutionGroup"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ResolutionGroup/HBoxRes"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "窗口模式:"
+
+[node name="OptionWindow" type="OptionButton" parent="VBoxContainer/ResolutionGroup/HBoxRes"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "窗口模式"
+popup/item_0/id = 0
+popup/item_1/text = "全屏"
+popup/item_1/id = 1
+popup/item_2/text = "无边框全屏"
+popup/item_2/id = 2
+
+[node name="BenchmarkGroup" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonBenchmark" type="Button" parent="VBoxContainer/BenchmarkGroup"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "运行性能基准测试 (512 步)"
+
+[node name="LabelHint" type="Label" parent="VBoxContainer/BenchmarkGroup"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.701961, 0.701961, 1)
+theme_override_font_sizes/font_size = 12
+text = "* 测试期间将实时绘制超分系数 (0.25 - 1.0) 变化曲线"
+horizontal_alignment = 1
+
+[node name="GraphContainer" type="Control" parent="VBoxContainer/BenchmarkGroup"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="BG" type="ColorRect" parent="VBoxContainer/BenchmarkGroup/GraphContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Line" type="Line2D" parent="VBoxContainer/BenchmarkGroup/GraphContainer"]
+unique_name_in_owner = true
+width = 2.0
+default_color = Color(0, 0.8, 1, 1)
+antialiased = true
+
+[node name="Label025" type="Label" parent="VBoxContainer/BenchmarkGroup/GraphContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = " 0.25"
+
+[node name="Label10" type="Label" parent="VBoxContainer/BenchmarkGroup/GraphContainer"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = " 1.0"
+
+[connection signal="item_selected" from="VBoxContainer/ResolutionGroup/HBoxRes/OptionWindow" to="." method="_on_window_mode_selected"]
+[connection signal="pressed" from="VBoxContainer/BenchmarkGroup/ButtonBenchmark" to="." method="_on_benchmark_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cr4v47r42c4xv"]
+
+[ext_resource type="Script" uid="uid://dgjkcqqlx8cum" path="res://models/surface.gd" id="1_jsh41"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qta37"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 1)
+metallic = 0.5
+roughness = 0.5
+emission_enabled = true
+rim_enabled = true
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0tlob"]
+material = SubResource("StandardMaterial3D_qta37")
+size = Vector2(0.9, 0.9)
+
+[node name="surface" type="MeshInstance3D" unique_id=257129924]
+mesh = SubResource("PlaneMesh_0tlob")
+script = ExtResource("1_jsh41")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c3uw6nw2qd48x"]
+
+[ext_resource type="Script" uid="uid://cnjitjm47b4s7" path="res://models/color.gd" id="1_qta37"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qncar"]
+size = Vector3(0.99, 0.99, 0.99)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3yum"]
+albedo_color = Color(0.25030932, 0.25030932, 0.25030932, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[node name="Node3D" type="Node3D" unique_id=1282553187]
+script = ExtResource("1_qta37")
+
+[node name="block" type="MeshInstance3D" parent="." unique_id=468054069]
+mesh = SubResource("BoxMesh_qncar")
+surface_material_override/0 = SubResource("StandardMaterial3D_t3yum")
